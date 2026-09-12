@@ -272,7 +272,7 @@ dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-be
 .hero_meta .btn { margin-top: 1.4rem; }
 @media (max-width: 620px) {
   .section_hero { align-items: flex-end; min-height: 50rem; }
-  .hero_bg-image { object-position: 74% top; }
+  .hero_bg-image { object-position: right top; }
   .section_hero::before { background: linear-gradient(180deg, transparent 0%, transparent 22%, color-mix(in srgb, var(--bg) 60%, transparent) 46%, var(--bg) 74%); }
   .hero_content { max-width: none; }
 }
