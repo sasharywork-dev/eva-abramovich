@@ -139,29 +139,44 @@ svg { display: block; }
   padding-block: 0.9rem; padding-inline: var(--pad-inline);
 }
 .navbar > * { position: relative; z-index: 1; }
-.navbar::before {
+/* два слоя (light/dark), а не один с меняющимся background: браузеры (особенно Safari)
+   не умеют плавно интерполировать между двумя разными градиентами — переход "прыгает"
+   независимо от transition-duration. Кроссфейдим слои через opacity — она анимируется
+   гладко всегда. ::before — светлая тема (видна по умолчанию), ::after — тёмная. */
+.navbar::before, .navbar::after {
   content: ""; position: absolute; inset: 0 0 auto 0; height: 145%;
   z-index: 0; pointer-events: none;
   backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+}
+.navbar::before {
   background: linear-gradient(to bottom,
     color-mix(in srgb, var(--bg) 90%, transparent) 0%,
     color-mix(in srgb, var(--bg) 55%, transparent) 62%,
     transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+  opacity: 1;
+}
+.navbar::after {
+  background: linear-gradient(to bottom,
+    rgba(10, 9, 6, 0.86) 0%,
+    rgba(10, 9, 6, 0.46) 62%,
+    transparent 100%);
+  opacity: 0;
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
-  .navbar::before {
+  .navbar::before, .navbar::after {
     height: 100%; backdrop-filter: none; -webkit-backdrop-filter: none;
-    background: var(--bg);
     -webkit-mask-image: none; mask-image: none;
   }
+  .navbar::before { background: var(--bg); }
+  .navbar::after { background: #0a0906; }
 }
 /* nav inverts over dark sections (data-nav="dark") */
-.navbar, .navbar::before, .navbar_logo-link span, .navbar_logo-link::before,
+.navbar, .navbar::before, .navbar::after, .navbar_logo-link span, .navbar_logo-link::before,
 .navbar_menu a, .navbar_menu-button, .navbar_menu-button i {
-  transition: color 1.1s cubic-bezier(.4, 0, .2, 1), background-color 1.1s cubic-bezier(.4, 0, .2, 1), background 1.1s cubic-bezier(.4, 0, .2, 1), border-color 1.1s cubic-bezier(.4, 0, .2, 1);
+  transition: color 1.1s cubic-bezier(.4, 0, .2, 1), background-color 1.1s cubic-bezier(.4, 0, .2, 1), opacity 1.1s cubic-bezier(.4, 0, .2, 1), border-color 1.1s cubic-bezier(.4, 0, .2, 1);
 }
 .navbar.is-dark .navbar_logo-link span,
 .navbar.is-dark .navbar_menu a,
@@ -171,12 +186,8 @@ svg { display: block; }
 .navbar.is-dark .navbar_menu a[data-cta]:hover { color: rgba(255, 255, 255, 0.7); }
 .navbar.is-dark .navbar_menu-button { border-color: rgba(255, 255, 255, 0.4); }
 .navbar.is-dark .navbar_menu-button i { color: #fff; }
-.navbar.is-dark::before {
-  background: linear-gradient(to bottom,
-    rgba(10, 9, 6, 0.86) 0%,
-    rgba(10, 9, 6, 0.46) 62%,
-    transparent 100%);
-}
+.navbar.is-dark::before { opacity: 0; }
+.navbar.is-dark::after { opacity: 1; }
 
 .navbar_logo-link { display: inline-flex; align-items: center; gap: 0.55rem; }
 .navbar_logo-link::before { content: ""; width: 0.7rem; height: 0.7rem; background: var(--deep-indigo); flex: none; }
