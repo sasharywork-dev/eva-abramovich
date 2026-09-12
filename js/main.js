@@ -72,9 +72,9 @@
         if (navIO) navIO.disconnect();
         overlapping.clear();
         var h = navbar.offsetHeight;
-        /* trigger a bit before the dark section reaches the header, so the 1.1s
+        /* trigger a bit before the dark section reaches the header, so the .55s
            colour transition has room to run instead of snapping at the edge */
-        var lead = 90;
+        var lead = 60;
         var top = Math.max(0, h - lead);
         navIO = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
