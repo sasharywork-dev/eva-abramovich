@@ -240,19 +240,13 @@ dialog.mobile-menu[open] nav a:nth-child(5) { animation-delay: .32s; }
 .mobile-menu_top { opacity: 0; }
 dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-bezier(.22, .61, .18, 1) forwards; }
 
-.mobile-menu_social { display: flex; gap: 0.75rem; margin-top: auto; padding-top: 2rem; }
-.mobile-menu_social-link {
-  width: 2.75rem; height: 2.75rem; flex: none;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--line); border-radius: 50%; color: var(--ink);
-  transition: border-color .15s ease, color .15s ease;
-}
-.mobile-menu_social-link svg { width: 1.15rem; height: 1.15rem; }
-.mobile-menu_social-link:hover, .mobile-menu_social-link:active { color: var(--indigo); border-color: var(--indigo); }
-.mobile-menu_social-link { opacity: 0; transform: translateY(1rem); }
-dialog.mobile-menu[open] .mobile-menu_social-link { animation: menu-item-in .5s cubic-bezier(.22, .61, .18, 1) forwards; }
-dialog.mobile-menu[open] .mobile-menu_social-link:nth-child(1) { animation-delay: .38s; }
-dialog.mobile-menu[open] .mobile-menu_social-link:nth-child(2) { animation-delay: .44s; }
+/* соцссылки в мобильном меню — переиспользуют готовый .contact_rows из «Записаться»
+   (никаких новых кнопок/иконок), тут только позиционирование внизу диалога + анимация */
+.contact_rows.mobile-menu_social { margin-top: auto; padding-top: 2rem; }
+.mobile-menu_social a { opacity: 0; transform: translateY(1rem); }
+dialog.mobile-menu[open] .mobile-menu_social a { animation: menu-item-in .5s cubic-bezier(.22, .61, .18, 1) forwards; }
+dialog.mobile-menu[open] .mobile-menu_social a:nth-child(1) { animation-delay: .38s; }
+dialog.mobile-menu[open] .mobile-menu_social a:nth-child(2) { animation-delay: .44s; }
 
 @media (max-width: 620px) {
   .navbar_menu { display: none; }
@@ -631,9 +625,9 @@ html.anim .reveal.in { opacity: 1; transform: none; transition: opacity .55s cub
   html.anim .reveal, html.anim .reveal.in { opacity: 1; transform: none; transition: none; }
   .topics .toggle, .topics details[open] .toggle { transition: none; }
   dialog.mobile-menu[open], dialog.mobile-menu.is-closing, dialog.mobile-menu[open] nav a, dialog.mobile-menu[open] .mobile-menu_top,
-  dialog.mobile-menu[open] .mobile-menu_social-link,
+  dialog.mobile-menu[open] .mobile-menu_social a,
   dialog.mobile-menu[open]::backdrop, dialog.mobile-menu.is-closing::backdrop { animation: none; }
-  dialog.mobile-menu nav a, dialog.mobile-menu .mobile-menu_top, dialog.mobile-menu .mobile-menu_social-link { opacity: 1; transform: none; }
+  dialog.mobile-menu nav a, dialog.mobile-menu .mobile-menu_top, dialog.mobile-menu .mobile-menu_social a { opacity: 1; transform: none; }
 }
 
 /* ---- parallax: смещение задаёт js (rAF + IntersectionObserver), тут только запас на масштаб ---- */
