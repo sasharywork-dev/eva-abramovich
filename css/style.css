@@ -599,8 +599,8 @@ dialog.mobile-menu[open] .mobile-menu_social a:nth-child(2) { animation-delay: .
 
 /* ---- footer ---- */
 .footer {
-  padding-block: 8rem 3.5rem; padding-inline: var(--pad-inline);
-  display: flex; flex-direction: column; gap: 5.5rem;
+  padding-block: 10rem 1rem; padding-inline: 0;
+  display: flex; flex-direction: column; gap: 15rem;
   background: var(--indigo); color: #fff;
 }
 /* строка тегов растянута на всю ширину */
