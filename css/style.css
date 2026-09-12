@@ -510,7 +510,7 @@ dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-be
 /* подчёркивание привязано к словам, а не к фиксированной позиции строки */
 .section_start .section-note .note-u { position: relative; white-space: nowrap; }
 .note-u_underline {
-  position: absolute; left: 0; right: 0; bottom: 0.192rem;
+  position: absolute; left: 0; right: 0; bottom: -0.8rem;
   width: 100%; height: 0.992rem;
   color: var(--ink);
 }
@@ -524,17 +524,17 @@ dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-be
 .steps_squiggle.is-a { width: 6.4rem; height: 5.6rem; left: 45%; top: 14%; transform: rotate(20deg); }
 .steps_squiggle.is-b { width: 4.5rem; height: 4.75rem; left: 51%; top: 64%; transform: rotate(102deg); }
 
-@media (min-width: 621px) {
+@media (min-width: 480px) {
   .steps ol { align-items: flex-start; gap: 0.5rem; }
   .steps li:nth-child(1) { margin-left: 10%; }
   .steps li:nth-child(2) { margin-left: 60%; }
   .steps li:nth-child(3) { margin-left: 17%; }
   .section_start .section-note { margin-left: 66%; margin-top: 3rem; }
 }
-@media (max-width: 620px) {
+@media (max-width: 479px) {
   .steps_squiggle { display: none; }
 }
-@media (max-width: 620px) {
+@media (max-width: 479px) {
   .steps li { flex-direction: row; align-items: flex-start; max-width: none; }
   .steps li > div { flex: 1; }
 }
@@ -577,11 +577,11 @@ dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-be
 .contact_envelope-draw {
   display: block; width: 100%; height: auto; aspect-ratio: 612 / 524;
 }
-@media (min-width: 621px) {
+@media (min-width: 480px) {
   .contact_envelope { width: 34rem; }
   .contact_envelope-draw { width: 34rem; }
 }
-@media (max-width: 620px) {
+@media (max-width: 479px) {
   .contact_grid { grid-template-columns: 1fr; gap: 3rem; }
   .contact_envelope { justify-self: stretch; width: 100%; }
   .contact_envelope-draw { width: 100%; height: auto; }
@@ -666,14 +666,17 @@ html.anim .reveal.in { opacity: 1; transform: none; transition: opacity .55s cub
   .section_about { padding-block: 3rem; }
   .about_facts { gap: 1.25rem; margin-top: 2rem; }
 
+  .footer { padding-block: 4.5rem 2.5rem; gap: 3rem; }
+  .footer_tags { justify-content: flex-start; column-gap: 1.25rem; }
+  .footer_flower { height: 3.5rem; }
+}
+/* «Как начать» и «Записаться» — резиновая вёрстка, ничего не меняем до настоящей узкой
+   мобилки (порог совпадает с переключением корневого font-size на vw-формулу, см. выше) */
+@media (max-width: 479px) {
   .steps .steps_icon { width: 2.75rem; height: 2.75rem; }
   .steps h3 { font-size: 1.4rem; }
   .section_start .section-note { margin-top: 2rem; }
 
   .contact_rows { gap: 2rem; margin-top: 2rem; }
   .contact_rows a b { font-size: 1.5rem; }
-
-  .footer { padding-block: 4.5rem 2.5rem; gap: 3rem; }
-  .footer_tags { justify-content: flex-start; column-gap: 1.25rem; }
-  .footer_flower { height: 3.5rem; }
 }
