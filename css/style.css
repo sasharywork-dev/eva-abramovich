@@ -677,6 +677,7 @@ html.anim .reveal.in { opacity: 1; transform: none; transition: opacity .55s cub
   .price { font-size: 2.6rem; }
 
   .section_about { padding-block: 3rem; }
+  .section_about .body-lg { font-size: 0.88rem; }
   .about_facts { gap: 1.25rem; margin-top: 2rem; }
 
   .footer { padding-block: 4.5rem 2.5rem; gap: 3rem; }
