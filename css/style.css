@@ -202,6 +202,7 @@ dialog.mobile-menu {
   width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; border: 0;
   padding-block: 1.25rem 2.5rem; padding-inline: var(--pad-inline);
   background: var(--bg); color: var(--ink);
+  display: flex; flex-direction: column;
 }
 /* анимация открытия: слой поднимается и проявляется, элементы внутри — ступенями */
 dialog.mobile-menu[open] { animation: menu-in .55s cubic-bezier(.22, .61, .18, 1) both; }
@@ -239,6 +240,20 @@ dialog.mobile-menu[open] nav a:nth-child(5) { animation-delay: .32s; }
 .mobile-menu_top { opacity: 0; }
 dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-bezier(.22, .61, .18, 1) forwards; }
 
+.mobile-menu_social { display: flex; gap: 0.75rem; margin-top: auto; padding-top: 2rem; }
+.mobile-menu_social-link {
+  width: 2.75rem; height: 2.75rem; flex: none;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 50%; color: var(--ink);
+  transition: border-color .15s ease, color .15s ease;
+}
+.mobile-menu_social-link svg { width: 1.15rem; height: 1.15rem; }
+.mobile-menu_social-link:hover, .mobile-menu_social-link:active { color: var(--indigo); border-color: var(--indigo); }
+.mobile-menu_social-link { opacity: 0; transform: translateY(1rem); }
+dialog.mobile-menu[open] .mobile-menu_social-link { animation: menu-item-in .5s cubic-bezier(.22, .61, .18, 1) forwards; }
+dialog.mobile-menu[open] .mobile-menu_social-link:nth-child(1) { animation-delay: .38s; }
+dialog.mobile-menu[open] .mobile-menu_social-link:nth-child(2) { animation-delay: .44s; }
+
 @media (max-width: 620px) {
   .navbar_menu { display: none; }
   .navbar_menu-button { display: inline-flex; }
@@ -273,7 +288,7 @@ dialog.mobile-menu[open] .mobile-menu_top { animation: menu-item-in .5s cubic-be
 .hero_meta .btn { margin-top: 1.4rem; }
 @media (max-width: 620px) {
   .section_hero { align-items: flex-end; min-height: 50rem; }
-  .hero_bg-image { object-position: right top; }
+  .hero_bg-image { object-position: 90% top; }
   .section_hero::before { background: linear-gradient(180deg, transparent 0%, transparent 22%, color-mix(in srgb, var(--bg) 60%, transparent) 46%, var(--bg) 74%); }
   .hero_content { max-width: none; }
 }
@@ -616,13 +631,14 @@ html.anim .reveal.in { opacity: 1; transform: none; transition: opacity .55s cub
   html.anim .reveal, html.anim .reveal.in { opacity: 1; transform: none; transition: none; }
   .topics .toggle, .topics details[open] .toggle { transition: none; }
   dialog.mobile-menu[open], dialog.mobile-menu.is-closing, dialog.mobile-menu[open] nav a, dialog.mobile-menu[open] .mobile-menu_top,
+  dialog.mobile-menu[open] .mobile-menu_social-link,
   dialog.mobile-menu[open]::backdrop, dialog.mobile-menu.is-closing::backdrop { animation: none; }
-  dialog.mobile-menu nav a, dialog.mobile-menu .mobile-menu_top { opacity: 1; transform: none; }
+  dialog.mobile-menu nav a, dialog.mobile-menu .mobile-menu_top, dialog.mobile-menu .mobile-menu_social-link { opacity: 1; transform: none; }
 }
 
 /* ---- parallax: смещение задаёт js (rAF + IntersectionObserver), тут только запас на масштаб ---- */
 @media (prefers-reduced-motion: no-preference) {
-  .hero_bg-image, .about_bg-image, .work_aside-photo { scale: 1; will-change: transform; }
+  .hero_bg-image, .about_bg-image, .work_aside-photo { scale: 1.1; will-change: transform; }
   /* scale grows away from the part of the frame that must stay put */
   .hero_bg-image { transform-origin: right top; }
   .work_aside-photo { transform-origin: center 0%; }
