@@ -126,6 +126,7 @@ svg { display: block; }
   color: var(--indigo);
   margin-bottom: 2.5rem;
 }
+.eyebrow_break { display: none; }
 
 .after-head { margin-top: 3.25rem; }
 
@@ -641,12 +642,13 @@ html.anim .reveal.in { opacity: 1; transform: none; transition: opacity .55s cub
   }
   .section-note { margin-top: 2rem; }
   .eyebrow { margin-bottom: 1.5rem; }
+  .eyebrow_break { display: block; }
   .after-head { margin-top: 2rem; }
   dialog.mobile-menu nav a { font-size: 1.6rem; }
 
   .section_hero { min-height: 36rem; padding-block: 5.5rem 4rem; }
   .hero_meta { gap: 1.4rem; margin-top: 1.8rem; }
-  .hero_meta .btn { margin-top: 0.6rem; }
+  .hero_meta .btn { margin-top: 0.85rem; }
   .hero_specialization .body-lg { font-size: 0.88rem; }
 
   .section_epigraph { padding-block: 4.5rem; }
