@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eva-abramovich.com/sitemap.xml
