@@ -290,6 +290,7 @@ dialog.mobile-menu[open] .mobile-menu_social a:nth-child(2) { animation-delay: .
 .hero_meta { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; margin-top: 3rem; }
 .hero_role { font-size: var(--fs-small); color: var(--ink-soft); }
 .hero_specialization { display: flex; flex-direction: column; gap: 0.9rem; max-width: 44rem; }
+.hero_focus { font-size: var(--fs-small); color: var(--ink-soft); }
 .hero_meta .btn { margin-top: 1.4rem; }
 @media (max-width: 620px) {
   .section_hero { align-items: flex-end; min-height: 50rem; }
@@ -345,6 +346,7 @@ dialog.mobile-menu[open] .mobile-menu_social a:nth-child(2) { animation-delay: .
 .work_main { min-width: 0; }
 .work_main .display { font-size: 3.8rem; }
 .work_main .topics { margin-top: 4.5rem; }
+.topics_more { margin-top: 2rem; color: var(--ink-soft); }
 @media (max-width: 620px) {
   .work_grid { grid-template-columns: 1fr; row-gap: 3.5rem; }
   .work_aside { order: 2; gap: 1.5rem; }
